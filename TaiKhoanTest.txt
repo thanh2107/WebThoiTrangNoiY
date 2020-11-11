@@ -1,0 +1,6 @@
+
+Trang truy cập trang web http://localhost/WebBanHang_Laravel
+user: test321 / 321321
+
+Trang truy cập trang web quản trị http://localhost/WebBanHang_Laravel/admin
+admin: admin123 / 123123 
