@@ -18,7 +18,6 @@
 
 
 		Route::get('/',[
-
 			'uses'=>'App\Http\Controllers\HomeController@getIndex',
 			'as'=>'trang-chu'
 		]);

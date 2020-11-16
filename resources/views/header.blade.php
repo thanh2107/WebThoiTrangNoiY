@@ -7,7 +7,7 @@
 				<div class="row">
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
-						<a href="index" class="site-logo">
+						<a href="{{route('trang-chu')}}" class="site-logo">
 							<img style="max-width: 80%" src="resources/img/logo12.png" alt="">
 							
 						</a>
