@@ -88,7 +88,7 @@ class AdminController extends Controller
         }
         public function manage_orders(){
          $this->AuthLogin();
-        $all_order = HoaDon::all();
+        $all_order = HoaDon::paginate(10);
         $all_detail_order = ChiTietHD::all();
         return view('admin.manage_orders',compact('all_order','all_detail_order'));
     
@@ -106,6 +106,13 @@ class AdminController extends Controller
 
          Session::put('message', 'Đã xác nhận giao hàng');
          return redirect()->back();
+        }
+         public function manage_users(){
+         $this->AuthLogin();
+          $all_users = User::paginate(10);
+         $all_order = HoaDon::all();
+        return view('admin.manage_users',compact('all_users','all_order'));
+    
         }
 }
 

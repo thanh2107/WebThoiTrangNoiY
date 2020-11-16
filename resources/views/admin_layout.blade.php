@@ -130,6 +130,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="{{route('manage-users')}}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>Quản lý người dùng</span>
+                    </a>
+                 
+                </li>
               
             </ul>            </div>
         <!-- sidebar menu end-->

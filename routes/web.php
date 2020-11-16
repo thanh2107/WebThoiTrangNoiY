@@ -138,6 +138,10 @@
 			'as'=>'confirm-order'
 		]);
 
+		Route::get('manage-users',[
+			'uses'=>'App\Http\Controllers\AdminController@manage_users',
+			'as'=>'manage-users'
+		]);
 		//slide 
 		Route::get('all-slide',[
 

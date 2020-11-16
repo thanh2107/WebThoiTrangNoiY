@@ -4,7 +4,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-     Danh sách đơn hàng
+     Danh sách người dùng
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-4">
@@ -32,28 +32,40 @@
           <tr>
             
             <th>Mã</th>
-            <th>Tên người đặt</th>
-            <th>Tổng giá tiền</th>
-            <th>Phương thức thanh toán</th>
-            <th>Ngày đặt hàng</th>
-             <th>Trạng thái</th>
+            <th>Tên người dùng</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Địa chỉ</th>
+            <th>SL đơn hàng</th>
+            <th>Cấp</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($all_order as $order)
+          @foreach($all_users as $user)
+          <?php
+          $count_quality_order = 0;
+          ?>
+           @foreach($all_order as $order)
+              @if($user->id == $order->id_user)
+              <?php
+              $count_quality_order +=1 ;
+              ?>
+              @endif
+            @endforeach
           <tr>
-            <td>{{$order->id_hoa_don}}</td>
-            <td>{{$order->user->name}}</td>
-            <td><span class="text-ellipsis">{{number_format($order ->tong_tien)}}₫</span></td>
-            <td><span class="text-ellipsis">{{$order ->thanh_toan}}</span></td>
-            <td><span class="text-ellipsis">{{$order ->ngay_mua}}</span></td>
-            <td><span class="text-ellipsis">{{$order ->trang_thai}}</span></td>
-            <td>
-              <a href="{{route('view-order',$order->id_hoa_don)}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-eye fa-check text-success text-active"></i>
-              </a>
-             
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
+            <td><span class="text-ellipsis">{{$user->email}}</span></td>
+            <td><span class="text-ellipsis">{{$user->phone}}</span></td>
+            <td><span class="text-ellipsis">{{$user->address}}</span></td>
+            <td><span class="text-ellipsis">{{$count_quality_order}}</span></td>
+             <td>
+              @if($user->level == 0 )
+              <span class="text-ellipsis">Người dùng</span>
+              @else
+              <span class="text-ellipsis">Admin</span>
+              @endif
             </td>
           </tr>
           @endforeach
@@ -64,11 +76,11 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of {{count($all_order)}} items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of {{count($all_users)}} items</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-             {!!$all_order->render() !!}
+             {!!$all_users->render() !!}
           </ul>
         </div>
       </div>
