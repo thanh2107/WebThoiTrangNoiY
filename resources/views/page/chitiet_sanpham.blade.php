@@ -11,7 +11,7 @@
 				<span> Thời trang /</span>
 			</div>
 			<div class="site-pagination url-1">
-				<a class="url-1" href="">{{$sanpham->loai_san_pham->ten_LSP}} /</a> 
+				<a class="url-1" href="{{route('loai-san-pham',[$sanpham->loai_san_pham->id_loai_san_pham,$ten_LSP= Str::slug($sanpham->loai_san_pham->ten_LSP, '-')])}}">{{$sanpham->loai_san_pham->ten_LSP}} /</a> 
 			</div>
 			<div class="site-pagination url-1">
 				<span class="url-1" href="">{{$sanpham->ten_san_pham}} </span> 
@@ -69,7 +69,7 @@
 					{{-- <h3 class="p-price">{{$sanpham->gia}}</h3> --}}
 					@if($sanpham->gia_khuyen_mai > 0)
 								<h3 class="p-price1 " style="margin-bottom: 0">{{number_format($sanpham->gia_khuyen_mai)}}₫</h3>
-								<span class="sale1">{{number_format($sanpham->gia)}}₫</span>
+								<span class="sale1">{{number_format($sanpham->gia)}}₫</span><br>
 							@else
 								<h3 class="p-price">{{number_format($sanpham->gia)}}₫</h3>
 							@endif
@@ -201,15 +201,15 @@
 			<div class="product-slider owl-carousel">
 				@foreach($sanpham_lienquan as $sl)
 					<div class="product-item">
-						<div class="pi-pic" onclick="window.location='{{route('chi-tiet-san-pham',$sl->id)}}';">
+						<div class="pi-pic" onclick="window.location='{{route('shop',[$sl->id,$ten_flie = Str::slug($sl->ten_san_pham, '-')])}}';">
 							@if($sl->gia_khuyen_mai > 0)
 							<div class="tag-sale">ON SALE</div>
 							@endif
 							<img src="resources/img/product/{{$sl->hinh}}" alt="">
 							<div class="pi-links">
-								<a href="{{route('chi-tiet-san-pham',$sl->id)}}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
+							<a href="{{route('shop',[$sl->id,$sl->ten_file])}}" class="add-card"><i class="flaticon-bag"></i><span>thêm vào giỏ</span></a>
+							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+						</div>
 						</div>
 						<div class="pi-text">
 							

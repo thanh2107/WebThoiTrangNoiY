@@ -15,10 +15,10 @@
 		<div class="hero-slider owl-carousel">
 			@foreach($slide as $sl)
 			@if($sl->link_product_id !=0)
-			<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('chi-tiet-san-pham',$sl->link_product_id)}}">
+			<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('shop',$sl->link_product_id)}}">
 			@else
 				@if($sl->link_catelory_id !=0)
-				<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('loai-san-pham',$sl->link_catelory_id)}}">
+				<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('loai-san-pham',['',$sl->link_catelory_id])}}">
 				@else
 					<a>
 				@endif
@@ -58,17 +58,17 @@
 			<div class="product-slider owl-carousel">
 				@foreach($new_product as $new) 
 				<div class="product-item">
-					<div class="pi-pic" onclick="window.location='{{route('chi-tiet-san-pham',$new->id)}}';">
+					<div class="pi-pic" onclick="window.location='{{route('shop',[$new->id,$new->ten_file])}}';">
 						<div class="tag-new">New</div>
 						<img src="resources/img/product/{{$new->hinh}}" alt="">
 						<div class="pi-links">
-							<a href="{{route('chi-tiet-san-pham',$new->id)}}" class="add-card"><i class="flaticon-bag"></i><span>thêm vào giỏ</span></a>
+							<a href="{{route('shop',[$new->id,$new->ten_file])}}" class="add-card"><i class="flaticon-bag"></i><span>thêm vào giỏ</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 						</div>
 					</div>
 					<div class="pi-text">
 						<h6> {{ number_format($new->gia)}}₫</h6>
-						<a href="{{route('chi-tiet-san-pham',$new->id)}}"> <p>{{$new->ten_san_pham}}</p></a>
+						<a href="{{route('shop',[$new->id,$new->ten_file])}}"> <p>{{$new->ten_san_pham}}</p></a>
 					</div>
 				</div>
 				@endforeach
@@ -88,7 +88,7 @@
 			</div>
 			<ul class="product-filter-menu">
 				@foreach($loai as $ls)
-				<li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls->ten_LSP}}</a></li>
+				<li><a href="{{route('loai-san-pham',[$ls->id_loai_san_pham,$ten_LSP= Str::slug($ls->ten_LSP, '-')])}}">{{$ls->ten_LSP}}</a></li>
 				@endforeach
 		
 			</ul>						
@@ -96,14 +96,14 @@
 				@foreach($best_selling as $sl)
 				<div class="col-lg-3 col-sm-6"> 
 					<div class="product-item">
-						<div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sl->id)}}';">
+						<div class="pi-pic"  onclick="window.location='{{route('shop',[$sl->id,$sl->ten_file])}}';">
 								
 							@if($sl->gia_khuyen_mai > 0)
 							<div class="tag-sale">ON SALE</div>
 							@endif
 							<img src="resources/img/product/{{$sl->hinh}}" alt="">
 							<div class="pi-links">
-								<a href="{{route('chi-tiet-san-pham',$sl->id)}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+								<a href="{{route('shop',[$sl->id,$sl->ten_file])}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						

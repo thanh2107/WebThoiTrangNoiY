@@ -70,13 +70,13 @@
 						<ul class="sub-menu">
 							@foreach($loai_sp as $loai)
 							@if($loai->trang_thai==1)
-							<li><a href="{{route('loai-san-pham',$loai->id_loai_san_pham)}}">{{$loai->ten_LSP}}</a></li>
+							<li><a href="{{route('loai-san-pham',[$loai->id_loai_san_pham,$ten_LSP= Str::slug($loai->ten_LSP, '-')])}}">{{$loai->ten_LSP}}</a></li>
 							@endif
 							@endforeach
 							
 						</ul>
 					</li>
-					<li><a href="{{route('loai-san-pham','14')}}">Áo vest
+					<li><a href="{{route('loai-san-pham',['14','ao-vest'])}}">Áo vest
 						<span class="new">Mới</span>
 					</a></li>
 					<li><a href="#">Cửa hàng</a>

@@ -6,7 +6,7 @@
         <h4>DANH MỤC</h4>
         <div class="site-pagination">
             <a href="{{route('trang-chu')}}">Trang chủ</a> / Trang phục / 
-            <a href="{{route('loai-san-pham',$tenloai->id_loai_san_pham)}}">{{$tenloai->ten_LSP}}</a> /
+            <a href="{{route('loai-san-pham',[$tenloai->id_loai_san_pham,$ten_LSP= Str::slug($tenloai->ten_LSP, '-')])}}">{{$tenloai->ten_LSP}}</a> /
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
                         @php
                         $count =0;
                         @endphp
-                        <li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls ->ten_LSP}}
+                        <li><a href="{{route('loai-san-pham',[$ls->id_loai_san_pham,$ten_LSP= Str::slug($ls->ten_LSP, '-')])}}">{{$ls ->ten_LSP}}
                             @foreach($sanpham as $sp)
                             @if($sp->id_loai_san_pham == $ls->id_loai_san_pham)
                             @php
@@ -134,13 +134,13 @@
                     @foreach($sp_theoloai as $sp)
                     <div class="col-lg-4 col-sm-6">
                      <div class="product-item">
-                        <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id)}}';">
+                        <div class="pi-pic"  onclick="window.location='{{route('shop',[$sp->id,$ten_flie = Str::slug($sp->ten_san_pham, '-')])}}';">
                             @if($sp->gia_khuyen_mai != 0)
                             <div class="tag-sale">ON SALE</div>
                             @endif
                             <img src="resources/img/product/{{$sp->hinh}}" alt="">
                             <div class="pi-links">
-                                <a href="{{route('chi-tiet-san-pham',$sp->id)}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+                                <a href="{{route('shop',[$sp->id,$ten_flie = Str::slug($sp->ten_san_pham, '-')])}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
                                 <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>

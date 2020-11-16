@@ -28,16 +28,16 @@
 		]);
 
 
-		Route::get('loai-san-pham/{loaisp}',[
+		Route::get('loai-san-pham/{loaisp}{ten_LSP?}',[
 
 			'uses'=>'App\Http\Controllers\HomeController@getLoaiSp',
 			'as'=>'loai-san-pham'
 		]);
 
-		Route::get('chi-tiet-san-pham/{id}',[
+		Route::get('/shop/{id}{ten_file?}',[
 
 			'uses'=>'App\Http\Controllers\HomeController@getChiTiet',
-			'as'=>'chi-tiet-san-pham'
+			'as'=>'shop'
 		]);
 		Route::get('danh_muc',[
 

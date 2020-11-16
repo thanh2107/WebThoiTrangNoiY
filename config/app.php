@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // App\Providers\eloquent-sluggable::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+
     ],
 
     /*

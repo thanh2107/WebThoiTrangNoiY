@@ -133,13 +133,13 @@
                 <div class="row">
                     @foreach($sanpham as $sp) <div class="col-lg-4 col-sm-6">
                      <div class="product-item">
-                        <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id)}}';">
+                        <div class="pi-pic"  onclick="window.location='{{route('shop',[$sp->id,$sp->ten_file])}}';">
                             @if($sp->gia_khuyen_mai != 0)
                             <div class="tag-sale">ON SALE</div>
                             @endif
                             <img src="resources/img/product/{{$sp->hinh}}" alt="">
                             <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+                                <a href="{{route('shop',[$sp->id,$sp->ten_file])}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
                                 <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>
