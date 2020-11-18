@@ -30,6 +30,14 @@
                                 <form role="form" action="{{'save_category'}}" method="post">
                                     {{csrf_field()}}
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Loai danh mục</label>
+                                   <select name="select_lsp" class="form-control input-sm m-bot15">
+                                        @foreach($loai_lsp as $lsp)
+                                            <option value="{{$lsp->id}}">{{$lsp->ten_loai}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Tên danh mục</label>
                                     <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Tên danh mục" required="">
                                 </div>

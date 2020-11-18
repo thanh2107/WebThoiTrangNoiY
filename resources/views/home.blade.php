@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Thời trang nữ Loriem</title>
+	<title>Đồ lót giá sỉ</title>
 	<base href="{{asset(' ')}}"/>
 	<meta charset="UTF-8">
-	<meta name="description" content=" Loriem | eCommerce Template">
-	<meta name="keywords" content="loriem, eCommerce, creative, html">
+{{-- 	<meta name="description" content=" Loriem | eCommerce Template">
+	<meta name="keywords" content="loriem, eCommerce, creative, html"> --}}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="resources/img/favicon.ico" rel="shortcut icon"/>
+	<link href="resources/img/logofb.ico" rel="shortcut icon"/>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -43,6 +43,7 @@
 			@yield('content')
 			<!-- footer-->
 			@include('footer')
+		
 
 
 	

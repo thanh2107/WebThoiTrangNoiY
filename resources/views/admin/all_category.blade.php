@@ -36,6 +36,7 @@
               </label>
             </th>
             <th>Tên danh mục</th>
+            <th>Loại danh mục</th>
             <th>Mô tả</th>
             <th>Trạng thái</th>
             <th style="width:30px;"></th>
@@ -46,6 +47,7 @@
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{$category ->ten_LSP}}</td>
+            <td>{{$category ->loai_lsp->ten_loai}}</td>
             <td><span class="text-ellipsis">{{$category ->mo_ta}}</span></td>
             <td>
               @if($category->trang_thai==0)

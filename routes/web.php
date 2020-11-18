@@ -33,6 +33,17 @@
 			'uses'=>'App\Http\Controllers\HomeController@getLoaiSp',
 			'as'=>'loai-san-pham'
 		]);
+		Route::get('dong-gia-95k/{id}{ten_dg?}',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getDongGia',
+			'as'=>'dong-gia-95k'
+		]);
+		Route::get('dong-gia-150k/{id}{ten_dg?}',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getDongGia',
+			'as'=>'dong-gia-150k'
+		]);
+
 
 		Route::get('/shop/{id}{ten_file?}',[
 

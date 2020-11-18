@@ -12,4 +12,8 @@ class LoaiSP extends Model
     public function sanpham(){
     	return $this->hasMany('App\Models\SanPham','id_loai_san_pham','id_loai_san_pham');
     }
+    public function loai_lsp(){
+    	return $this->belongsTo('App\Models\LoaiLSP','id_loai_lsp','id');
+    	//Khoá ngoại và khoá chính của bảng loai_lsp
+    }
 }

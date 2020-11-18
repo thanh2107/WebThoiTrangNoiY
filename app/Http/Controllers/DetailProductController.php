@@ -75,6 +75,8 @@ class DetailProductController extends Controller
 		     				$data  = array();
 		     				$data['id_san_pham'] = $id_product[0]->id;
 		     				$data['id_mau'] = $req->color_product;
+		     				$data['tu'] = $req->tu;
+		     				$data['den'] = $req->den;
 		     				$data['id_size'] = $req->size_product;
 		     				$data['soluong'] = $req->quantity;
 		     				ChiTietSP::insert($data);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LoaiSP;
 use App\Models\SanPham;
+use App\Models\LoaiLSP;
 use Session;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -25,7 +26,8 @@ class CategoryProductController extends Controller
     }
      public function add_category_product(){
             $this->AuthLogin();
-    		return view('admin.add_category');
+            $loai_lsp = LoaiLSP::all();
+    		return view('admin.add_category',compact('loai_lsp'));
     }
      public function all_category_product(){
              $this->AuthLogin();
@@ -48,8 +50,8 @@ class CategoryProductController extends Controller
                
 
             ]);
-
     		$data  = array();
+            $data ['id_loai_lsp'] = $req->select_lsp;
     		$data['ten_LSP'] = $req ->category_name;
     		$data['mo_ta'] = $req ->category_name_desc;
     		$data['trang_thai'] = $req ->category_status;	

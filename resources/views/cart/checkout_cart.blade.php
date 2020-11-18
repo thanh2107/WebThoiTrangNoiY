@@ -127,7 +127,7 @@ $content =Cart::content();
 							<div class="pl-thumb"><img src="{{URL::to('resources/img/product/'.$v_content->options->image)}}" alt=""></div>
 							<h6>{{$v_content->name}}</h6>
 
-							@if($v_content->weight > 0)
+							@if($v_content->weight !=$v_content->price)
 							<p  class="p-price1 " style="margin-bottom: 0;color: #F51167;	">{{number_format($v_content->weight)}}₫ x {{$v_content->qty}}</p>
 							<span class="sale1">{{number_format($v_content->weight)}}₫ </span>
 							@else

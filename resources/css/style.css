@@ -515,7 +515,6 @@ ol {
 
 .hero-slider .hs-item {
 	position: relative;
-	height: 720px;
 }
 
 .hero-slider .hs-item span {
@@ -892,7 +891,7 @@ font-size: 12px;
 
 .product-item .pi-text h6 {
 	float: right;
-	padding-left: 40px;
+	padding-left: 10px;
 	overflow: hidden;
 	font-weight: 700;
 	color: #111111;
@@ -2573,6 +2572,105 @@ span.style-checkbox{
     }
 
 /*custom*/
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #999999;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #F51167;
+}
+img.thumb {
+    width: 263px;
+    height: 263px;
+    background-color: #3e3e3e;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+img.thumbsmall {
+    width: 116px;
+    height: 116px;
+    background-color: #3e3e3e;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+li#menu-item-25725 {
+    font-size: 14px;
+    list-style: none;
+    position: relative;
+    line-height: 30px;
+    padding: 10px 15px;
+    min-width: 200px;
+    display: table-cell;
+    border-bottom: 1px solid #eee;
+}
+li#menu-item-25734 {
+	left: 20px;
+    border-bottom: 1px solid #eee;
+    display: table-cell;
+    min-width: 200px;
+    line-height: 30px;
+    padding: 10px 15p;
+    font-size: 14px;
+    list-style: none;
+    position: relative;
+}
+li#menu-item-25740 {
+	left: 20px;
+    font-size: 14px;
+    list-style: none;
+    position: relative;
+    line-height: 30px;
+    padding: 10px 15px;
+    min-width: 240px;
+    display: table-cell;
+}
+.sub-column-item .sub-column {
+    padding: 0;
+}
+.jas-menu ul ul {
+    left: 250px;
+    top: 20%;
+}
+ul ul, ol ol {
+    padding-left: 1.5em;
+}
+ul {
+    list-style: inside;
+}
+.bgbl {
+    background: #f6f6f8;
+}
+.fs__12 {
+    font-size: 12px;
+}
+.pl__15 {
+    padding-left: 15px;
+}
+.pb__10 {
+    padding-bottom: 10px;
+}
+.pr__15 {
+    padding-right: 15px;
+}
+.pt__10 {
+    padding-top: 10px;
+}
 select.address-select {
     width: 100%;
     height: 44px;

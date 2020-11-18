@@ -39,13 +39,22 @@ class CheckOutController extends Controller
            
             'myRadios.required'=>'Vui lòng chọn phương thức vận chuyển'
         ]);
-        $user = Auth::user();
-    
-        $user ->address = $req ->address;
+         $user = Auth::user();
+         $content =Cart::content();
+    //check người dùng có bị cấm k
+    if($user->trang_thai!=0)
+    {
+         
+          Session::put('message', 'Tài khoản của bạn đã bị khóa');
+            return redirect()->back();
+    }
+    else if(count($content)>0){
+
+         $user ->address = $req ->address;
         $user ->phone = $req ->phone;
         $user ->update();
-      $content =Cart::content();
-        $content =Cart::content();
+      
+       
       
             $order_data['id_user'] = strval($user->id);
             $order_data['ngay_mua'] = date('Y-m-d'); 
@@ -68,12 +77,22 @@ class CheckOutController extends Controller
              ChiTietSP::where('id',$v_content->id)->update($daban);
 
              }
+
              Cart::destroy();
              Session::put('message', 'Đặt hàng thành công');
             return redirect()->back();
 
 
+        
 
+    }
+    else {
+  
+  Session::put('message', 'Giỏ hàng chưa có sản phẩm nào');
+            return redirect()->back();
+       
+
+        }
 
         }
 

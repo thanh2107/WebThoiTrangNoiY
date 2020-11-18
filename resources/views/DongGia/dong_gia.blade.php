@@ -6,7 +6,7 @@
         <h4>DANH MỤC</h4>
         <div class="site-pagination">
             <a href="{{route('trang-chu')}}">Trang chủ</a> / Trang phục / 
-            <a href="{{route('loai-san-pham',[$tenloai->id_loai_san_pham,$ten_LSP= Str::slug($tenloai->ten_LSP, '-')])}}">{{$tenloai->ten_LSP}}</a> /
+            <a href="{{route(Str::slug($tendg->ten_donggia, '-'),[$tendg->id.'?',$ten_dg= Str::slug($tendg->ten_donggia, '-')])}}">{{$tendg->ten_donggia}}</a> /
         </div>
     </div>
 </div>

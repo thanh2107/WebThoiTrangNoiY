@@ -103,6 +103,14 @@
                         <label for="exampleInputEmail1">Số lượng sản phẩm</label>
                         <input type="number" value="0" class="form-control" id="quantity" name="quantity">
                     </div>
+                     <div class="form-group col-md-6 col-not-pdleft">
+                        <label for="exampleInputEmail1">Số kí phù hợp</label>
+                        <div style="display: flex;"><h4 style="padding: 5px">Từ</h4>
+                             <input style="width: 25%"  type="number" value="0" class="form-control" id="tu" name="tu"><h4 style="padding: 5px">Đến</h4>
+                              <input  style="width: 25%""  type="number" value="0" class="form-control" id="den" name="den">
+                        </div>
+                       
+                    </div>
 
 
                     <div class="form-group col-md-12 col-not-pdleft">

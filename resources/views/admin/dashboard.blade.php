@@ -24,7 +24,7 @@
 					</div>
 					<div class="col-md-8 market-update-left">
 					<h4>Users</h4>
-						<h3>{{$Countusers}}</h3>
+						<a href="{{route('manage-users')}}"><h3>{{$Countusers}}</h3></a> 
 						
 					</div>
 				  <div class="clearfix"> </div>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-md-8 market-update-left">
 						<h4>Orders</h4>
-						<h3>{{$CountBill}}</h3>
+						<a href="{{route('manage-orders')}}"><h3>{{$CountBill}}</h3></a>
 						
 					</div>
 				  <div class="clearfix"> </div>

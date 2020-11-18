@@ -60,18 +60,20 @@ public function save_product(Request $req){
     $this->validate($req,
 
         [   
-           
+            'product_id'=>'unique:san_pham,id',
             'product_name'=>'unique:san_pham,ten_san_pham',
             'gia_khuyen_mai_sanpham'=> 'lt:gia_sanpham',
             
         ],
         [
             'product_name.unique'=>'Tên sản phẩm đã có sẵn',
+             'product_id.unique'=>'ID sản phẩm đã có sẵn',
             'gia_khuyen_mai_sanpham.lt'=>'Giá khuyến mãi phải nhỏ hơn giá bán'
 
         ]);
     
     $data  = array();
+    $data['id'] = $req->product_id;
     $data['ten_san_pham'] = $req->product_name;
     $data['id_loai_san_pham'] = $req->category_product;
     $data['mo_ta'] = $req->product_desc;
@@ -191,10 +193,10 @@ public function delete_product($id_san_pham){
     $product =  SanPham::where('id',$id_san_pham)->first();
     $namefile = "resources/img/product/".rtrim($product->ten_file, "/");
    // dd($namefile);
-     array_map('unlink', glob("$namefile/*.*"));
+     array_map('unlink', glob("$namefile/*.*")); //xoa file 
     if(rmdir($namefile)){
       $name_img = "resources/img/product/".$product->hinh;
-        unlink($name_img);
+        unlink($name_img); //xoa hinh
     SanPham::where('id',$id_san_pham) ->delete();
     Session::put('message', 'Xoá  sản phẩm thành công');
     return Redirect::to('all_product');
@@ -221,7 +223,7 @@ $data['moi'] = $req->product_status_new;
 $get_image = $req->file('product_img');
 $allowtypes = array('jpg', 'png', 'jpeg');
 $allowUpload   = true;
-    
+$product = SanPham::where('id',$id_san_pham)->first();
 
 if($get_image){
   $get_img_extensiton = $get_image->getclientoriginalextension();
@@ -229,7 +231,8 @@ if($get_image){
     {
         $allowUpload = false;
     }
-
+    $name_img = "resources/img/product/".$product->hinh; //xoa hinh 
+    unlink($name_img); 
     $ten_sp = $this->convert_name($req->product_name);
     $new_image = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_image->getclientoriginalextension();
                 // chèn random và giờ phút giây cho không trùng tên hình ảnh
@@ -260,7 +263,7 @@ if($get_image){
            $get_image_detail =$req->file('product_img'.$i);
           if ($get_image_detail)
           {
-
+          
             $get_img_extensiton_detail = $get_image_detail->getclientoriginalextension();
             $new_image_detail = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_img_extensiton_detail;
                     // chèn random và giờ phút giây cho không trùng tên hình ảnh

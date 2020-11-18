@@ -10,6 +10,7 @@ use App\Models\HoaDon;
 use App\Models\ChiTietHD;
 use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
+use App\Models\DongGia;
 use App\Models\NguoiDung;
 use App\Models\ResetPassword;
 use App\Models\User;
@@ -23,7 +24,7 @@ class HomeController extends Controller
  
     public function getIndex(){
         $slide = Slide:: where('trang_thai',1)->get();
-        $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
+        $loai = LoaiSP::paginate(5); /* chỉ lấy ra 8 dah muc sản phẩm mới */
         $new_product = SanPham::where('moi',1)->paginate(10); /* chỉ lấy ra 5 sản phẩm mới */
         //su lý gộp đã bán
         $chitietsp = ChiTietSP::all();
@@ -50,22 +51,44 @@ class HomeController extends Controller
         return view('page.trangchu',compact('slide','new_product','best_selling','loai'));
     }
      public function getLoaiSp($loaisp){
+
         $sp_theoloai = SanPham::where('id_loai_san_pham',$loaisp)->get();
         $loai = LoaiSP::all();
         $tenloai = LoaiSP::where('id_loai_san_pham',$loaisp)->first();
         $sanpham = SanPham::all();
     	return view('page.loai_sanpham',compact('sp_theoloai','loai','tenloai','sanpham'));
     }
+      public function getDongGia($id){  //code xấu xa
+        if($id==1)
+        {
+        $a = SanPham::where('gia','95000')->get();
+        $b = SanPham::where('gia_khuyen_mai','95000')->get();
+        $sp_theoloai = $a->merge($b);
+
+        }
+        if($id==2)
+        {
+        $a = SanPham::where('gia','150000')->get();
+        $b = SanPham::where('gia_khuyen_mai','150000')->get();
+        $sp_theoloai = $a->merge($b);
+        }
+
+        $loai = LoaiSP::all();
+        $tendg = DongGia::where('id',$id)->first();
+        $sanpham = SanPham::all();
+        return view('DongGia.dong_gia',compact('sp_theoloai','loai','tendg','sanpham'));
+        
+    }
     public function getDanhMuc(){           
         $sanpham = SanPham::all();
          $loai = LoaiSP::all();
       return view('page.danhmuc_sanpham',compact('sanpham','loai'));
 }
-    public function getChiTiet(Request $req){
-         $sanpham = SanPham::where('id',$req->id)->first();
-         $chitietsp = ChiTietSP::where('id_san_pham',$req->id)->get();
-         $color_product = ChiTietSP::where('id_san_pham',$req->id)->select('id_mau')->distinct()->get();
-        $size_product = ChiTietSP::where('id_san_pham',$req->id)->select('id_size')->distinct()->get()    ;
+    public function getChiTiet($id){
+         $sanpham = SanPham::where('id',$id)->first();
+         $chitietsp = ChiTietSP::where('id_san_pham',$id)->get();
+         $color_product = ChiTietSP::where('id_san_pham',$id)->select('id_mau')->distinct()->get();
+        $size_product = ChiTietSP::where('id_san_pham',$id)->select('id_size')->distinct()->get()    ;
         $sanpham_lienquan = SanPham::where('id_loai_san_pham',$sanpham->id_loai_san_pham)->paginate(10); 
     	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','sanpham_lienquan','color_product','size_product'));
     }

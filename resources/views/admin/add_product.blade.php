@@ -31,7 +31,14 @@
                     {{csrf_field()}}
                     <div class="col-md-8">
                         <div class="form-group">
-                        <label for="exampleInputEmail1">Tên sản phẩm</label>
+                        
+                        </div>
+                     <div class="col-md-6 form-group col-not-pdleft">
+                        <label for="exampleInputEmail1">Mã sản phẩm</label>
+                        <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Mã sản phẩm" required="">
+                    </div>
+                     <div class="col-md-6 form-group col-not-pdleft">
+                         <label for="exampleInputEmail1">Tên sản phẩm</label>
                         <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Tên sản phẩm" required="">
                     </div>
                     <div class="col-md-6 form-group col-not-pdleft">

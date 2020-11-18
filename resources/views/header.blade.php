@@ -2,6 +2,14 @@
 
 	<!-- Header section -->
 	<header class="header-section">
+		<div>
+			<div class="header__top bgbl pt__10 pb__10 pl__15 pr__15 fs__12">
+			<div class="header-text mr__15">
+				<i class="fa fa-phone" aria-hidden="true"></i> 
+				<span style="" class="__cf_call__">Gọi: <a href="">0988895726</a> (Nếu không mua được)</span>
+			</div>
+			</div>
+		</div>
 		<div class="header-top">
 			<div class="container">
 				<div class="row">
@@ -15,7 +23,7 @@
 					<div class="col-xl-6 col-lg-5">
 						<form class="header-search-form" action="{{'search'}}" method="post">
 							  {{csrf_field()}}
-							<input name="keywords_submit"  type="text" placeholder="Tìm kiếm trong loriem ....">
+							<input name="keywords_submit"  type="text" placeholder="Tìm kiếm trong đồ lót giá sỉ....">
 							<button name="btn_search" type="submit"><i class="flaticon-search"></i></button>
 						</form>
 					</div>
@@ -61,22 +69,53 @@
 					<li><a href="">Đồng giá</a>
 						<ul class="sub-menu">
 							@foreach($dong_gia as $dg)
-							<li><a href="">{{$dg->ten_donggia}}</a></li>
+
+							<?php
+							$sa = Str::slug($dg->ten_donggia, '-');
+							?>
+							<li><a href="{{route(Str::slug($dg->ten_donggia, '-'),[$dg->id.'?',$ten_dg= Str::slug($dg->ten_donggia, '-')])}}">{{$dg->ten_donggia}}</a></li>
 							@endforeach
 						</ul>	
 					</li>
 
-					<li><a href="{{route('danh_muc')}}">Sản phẩm</a>
+						<li id="menu-item-8149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="/shop/">Sản phẩm</a>
+		<ul class="sub-menu" style="display: table; width: 300px">
+			<li id="menu-item-25725" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sub-column-item"><a href="https://bomsister.vn/quan-lot-nu/">Quần lót nữ</a>
 						<ul class="sub-menu">
+							<li>
 							@foreach($loai_sp as $loai)
-							@if($loai->trang_thai==1)
-							<li><a href="{{route('loai-san-pham',[$loai->id_loai_san_pham,$ten_LSP= Str::slug($loai->ten_LSP, '-')])}}">{{$loai->ten_LSP}}</a></li>
+							@if($loai->trang_thai==1 && $loai->id_loai_lsp==1)
+							<li><a href="{{route('loai-san-pham',[$loai->id_loai_san_pham.'?',$ten_LSP= Str::slug($loai->ten_LSP, '-')])}}">{{$loai->ten_LSP}}</a></li>
 							@endif
 							@endforeach
-							
+							</li>
 						</ul>
+			</li>
+			<li id="menu-item-25734" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sub-column-item"><a href="https://bomsister.vn/ao-nguc/">Áo lót nữ</a>
+				<ul class="sub-menu">
+					<li>
+						@foreach($loai_sp as $loai)
+						@if($loai->trang_thai==1&& $loai->id_loai_lsp==2)
+						<li><a href="{{route('loai-san-pham',[$loai->id_loai_san_pham.'?',$ten_LSP= Str::slug($loai->ten_LSP, '-')])}}">{{$loai->ten_LSP}}</a></li>
+						@endif
+						@endforeach
 					</li>
-					<li><a href="{{route('loai-san-pham',['14','ao-vest'])}}">Áo vest
+				</ul>
+			</li>
+			<li id="menu-item-25740" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children sub-column-item"><a href="https://bomsister.vn/bralette/">Bralette</a>
+									<ul class="sub-menu">
+					<li>
+						@foreach($loai_sp as $loai)
+						@if($loai->trang_thai==1&& $loai->id_loai_lsp==3)
+						<li><a href="{{route('loai-san-pham',[$loai->id_loai_san_pham.'?',$ten_LSP= Str::slug($loai->ten_LSP, '-')])}}">{{$loai->ten_LSP}}</a></li>
+						@endif
+						@endforeach
+					</li>
+				</ul>							
+			</li>
+		</ul>
+	</li>
+					<li><a href="">Phụ kiện
 						<span class="new">Mới</span>
 					</a></li>
 					<li><a href="#">Cửa hàng</a>
