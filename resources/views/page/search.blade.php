@@ -15,17 +15,16 @@
 				@foreach($search_product as $sl)
 				<div class="col-lg-3 col-sm-6"> 
 					<div class="product-item">
-						<div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sl->id)}}';">
+						<div class="pi-pic"  onclick="window.location='{{route('shop',[$sl->id.'?',$sl->ten_file])}}';">
 								
 							@if($sl->gia_khuyen_mai > 0)
 							<div class="tag-sale">ON SALE</div>
 							@endif
-							<img src="resources/img/product/{{$sl->hinh}}" alt="">
+							<img class="thumb" src="resources/img/product/{{$sl->hinh}}" alt="">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
-						
 						</div>
 						<div class="pi-text">
 							

@@ -14,6 +14,7 @@ use App\Models\DongGia;
 use App\Models\NguoiDung;
 use App\Models\ResetPassword;
 use App\Models\User;
+use App\Models\TinTuc;
 use Illuminate\Support\Facades\Redirect;
 use Hash;
 use Auth;
@@ -92,6 +93,8 @@ class HomeController extends Controller
         $sanpham_lienquan = SanPham::where('id_loai_san_pham',$sanpham->id_loai_san_pham)->paginate(10); 
     	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','sanpham_lienquan','color_product','size_product'));
     }
+
+
      public function getLienHe(){
 
     	return view('page.lienhe');
@@ -112,6 +115,7 @@ class HomeController extends Controller
 
         return view('page.reset_pass');
     }
+
 
 
 
@@ -284,4 +288,16 @@ class HomeController extends Controller
         $detail_order = ChiTietHD::where('id_hoa_don',$order_id)->get();
         return view('page.view_order_customer',compact('order','detail_order','order_id'));
         }}
+
+        public function getTinTuc(){
+            $news  = TinTuc::all();
+            return view('page.tin_tuc',compact('news'));
+        }
+         public function getChiTietBaiViet ($id){
+        $best_selling = SanPham::orderby('da_ban','desc')->paginate(6);
+         $baiviet = TinTuc::where('id',$id)->first();
+         $all_news  = TinTuc::all();
+        $sanpham_lienquan = SanPham::paginate(10);
+        return view('page.chitiet_baiviet',compact('baiviet','all_news','best_selling','sanpham_lienquan'));
+    }
 }

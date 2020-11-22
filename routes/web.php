@@ -61,6 +61,11 @@
 			'uses'=>'App\Http\Controllers\HomeController@getLienHe',
 			'as'=>'lien-he'
 		]);
+		Route::get('tin-tuc',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getTinTuc',
+			'as'=>'tin-tuc'
+		]);
 
 		Route::get('gio-hang',[
 
@@ -114,6 +119,13 @@
 			'uses'=>'App\Http\Controllers\HomeController@resetPassword',
 			'as'=>'post-reset-password'
 		]);
+		Route::get('/bai-viet/{id}{tieu_de?}',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getChiTietBaiViet',
+			'as'=>'bai-viet'
+		]);
+		// ------------------------------------------------------------------------------------------------------
+		// ------------------------------------------------------------------------------------------------------
 		//Admin
 		Route::get('admin',[
 
@@ -153,6 +165,26 @@
 			'uses'=>'App\Http\Controllers\AdminController@manage_users',
 			'as'=>'manage-users'
 		]);
+
+		// ------------------------------------------------------------------------------------------------------
+		//news
+		Route::get('all-news',[
+
+			'uses'=>'App\Http\Controllers\NewsController@all_news',
+			'as'=>'all-news'
+		]);
+		Route::get('add-news',[
+
+			'uses'=>'App\Http\Controllers\NewsController@add_news',
+			'as'=>'add-news'
+		]);
+		Route::post('save-news',[
+
+			'uses'=>'App\Http\Controllers\NewsController@save_news',
+			'as'=>'save-news'
+		]);
+	// ------------------------------------------------------------------------------------------------------------
+
 		//slide 
 		Route::get('all-slide',[
 

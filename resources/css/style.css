@@ -2088,6 +2088,12 @@ font-size: 12px;
 	padding-bottom: 0;
 	position: relative;
 }
+.news-section {
+	padding-top: 20px;
+	padding-bottom: 0;
+	position: relative;
+}
+
 
 .contact-info h3 {
 	margin-bottom: 50px;
@@ -2592,7 +2598,8 @@ span.style-checkbox{
   background-color: #F51167;
 }
 img.thumb {
-    width: 263px;
+
+    width: 100%;
     height: 263px;
     background-color: #3e3e3e;
     background-image: none;
