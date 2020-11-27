@@ -34,10 +34,11 @@
 								@if(Auth::check()&&Auth::user()->level=='0')
 								<ul style="" class="main-menu">
 									<li><i class="flaticon-profile"></i></li>
-									<li><a href="#">{{Auth::user()->name}}</a> 
+									<li><a href="{{route('my-account')}}">{{Auth::user()->name}}</a> 
 										<ul class="sub-menu">
-											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>   Đăng xuất</a></li>
 											<li><a href="{{route('orders',Auth::user()->id)}}"><i class="fa fa-tasks"></i> Đơn hàng</a></li>
+											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>   Đăng xuất</a></li>
+											
 										</ul>	
 									</li>
 								</ul>	

@@ -49,10 +49,10 @@ $content =Cart::content();
 							<input  disabled="true"  value="{{Auth::user()->name}}"  type="text" placeholder="Tên người nhận">
 						</div>
 						<div class="col-md-6">
-							<input required="" name="phone" type="text" placeholder="Số điện thoại">
+							<input  value="{{Auth::user()->phone}}"  required="" name="phone" type="text" placeholder="Số điện thoại">
 						</div>
 						<div class="col-md-12">
-							<input required="" name="address" type="text" placeholder="Địa chỉ">
+							<input  value="{{Auth::user()->address}}"  required="" name="address" type="text" placeholder="Địa chỉ">
 
 
 						</div>

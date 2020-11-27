@@ -336,3 +336,21 @@
 			'uses'=>'App\Http\Controllers\HomeController@view_order_customer',
 			'as'=>'view-order-customer'
 		]);
+		// footer
+		// //////////////////////////////////////////////////////////////////
+
+		Route::get('orders-tracking',[
+
+			'uses'=>'App\Http\Controllers\HomeController@orders_tracking',
+			'as'=>'orders-tracking'
+		]);
+		Route::get('my-account',[
+
+			'uses'=>'App\Http\Controllers\HomeController@my_account',
+			'as'=>'my-account'
+		]);
+		Route::post('save-account',[
+
+			'uses'=>'App\Http\Controllers\HomeController@postSaveAccount',
+			'as'=>'save-account'
+		]);

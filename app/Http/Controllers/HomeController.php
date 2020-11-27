@@ -108,8 +108,15 @@ class HomeController extends Controller
         return view('page.thanhtoan');
     }
     public function getLogin(){
+        if(Auth::check()&&Auth::user()->level=='0'){
+            return view('page.my_account');
 
-        return view('page.login_register');
+        }
+        else{ 
+            return view('page.login_register');
+        }
+
+        
     }
      public function reset_password(){
 
@@ -189,7 +196,7 @@ class HomeController extends Controller
                 'password'=>'required|min:6|max:20',
                 'username'=>'required|unique:users,name|min:6|alpha_dash',
                 'confirmpassword'=>'required|same:password',
-                'phone' =>'numeric'
+                'phone' =>'numeric|min:10'
             
             ],
             [
@@ -204,7 +211,8 @@ class HomeController extends Controller
                 'confirmpassword.required'=>'Vui lòng nhập mật khẩu xác nhận',
                 'confirmpassword.same'=>'Mật khẩu không giống nhau',
                 'username.required'=>'Vui lòng nhập họ tên',
-                'phone.numeric'=>'Số điện thoại phải là số'
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại phải từ 10 số'
 
             ]);
        
@@ -299,5 +307,115 @@ class HomeController extends Controller
          $all_news  = TinTuc::all();
         $sanpham_lienquan = SanPham::paginate(10);
         return view('page.chitiet_baiviet',compact('baiviet','all_news','best_selling','sanpham_lienquan'));
+    }
+    public function orders_tracking(){
+       $best_selling = SanPham::orderby('da_ban','desc')->paginate(6);
+         $sanpham_lienquan = SanPham::paginate(10);
+         return view('page.orders_tracking',compact('sanpham_lienquan'));
+    }
+     public function my_account(){
+      
+         if(!Auth::check())
+         {   
+           return view('page.login_register');
+
+       }
+       else
+       {   
+
+        return view('page.my_account');
+        }
+    }
+       public function postSaveAccount (Request $req){
+         Session::put('last_auth_attempt', 'my_account');
+        $this->validate($req,
+
+            [   
+ 
+
+                'password_current'=>'required|min:6|max:20',
+            ],
+            [
+         
+                'password_current.required'=>'Vui lòng nhập mật khẩu hiện tại để lưu thông tin',
+                'password_current.min'=>'Nhập mật khẩu ít nhất 6 kí tự',
+
+            ]);
+
+        if($req->email != Auth::user()->email)
+        {$this->validate($req,
+
+            [   'email'=>'required|email|unique:users,email'
+            ]
+            ,[
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Không đúng định dạng email',
+                'email.unique'=>'Email đã có người sử dụng'
+             ]);
+          $data['email'] = $req->email;
+        }
+        if($req->username != Auth::user()->name)
+        {$this->validate($req,
+
+            [   'username'=>'required|unique:users,name|min:6|alpha_dash'
+            ]
+            ,[
+                'username.unique'=>'username đã có người sử dụng',
+                'username.min'=>'Nhập username ít nhất 6 kí tự',
+                'username.required'=>'Vui lòng nhập họ tên',
+                'username.alpha_dash'=>'Nhập username phải là chữ hoặc số, bao gồm dấu gạch ngang và không được có khoảng trắng'
+             ]);
+             $data['name'] = $req->username;
+        }
+         if($req->phone != Auth::user()->phone){
+             $this->validate($require 'file';,
+
+            [   
+ 
+                'phone' =>'min:10|numeric',
+            
+            ],
+            [
+         
+                'phone.numeric'=>'Số điện thoại phải là số',
+                 'phone.min'=>'Số điện thoại phải từ 10 số',
+
+            ]);
+              $data['phone'] = $req->phone;
+         }
+
+if (Hash::check($req->password_current, Auth::user()->password)) {
+   if(!empty($req->password1))
+        {
+           
+            $this->validate($req,
+
+            [   'password1'=>'min:6|max:20',
+                'password2'=>'required|same:password1',
+            ]
+            ,[  
+                
+                'password1.min'=>'Nhập mật khẩu mới ít nhất 6 kí tự',
+                'password2.required'=>'Vui lòng nhập password xác nhận nếu muốn thay đổi mật khẩu',
+                'password2.same'=>'Mật khẩu xác nhận nhập không trùng khớp'
+             ]);
+        //thay doi mk
+            $data['password'] = Hash::make($req->password2);
+            User::where('id', Auth::user()->id)->update($data);
+           return redirect()->back()->with(['flag'=>'success','message'=>'Cật nhật thông tin thành công!']);
+
+        }
+        if($req->phone == Auth::user()->phone&&$req->username == Auth::user()->name&&$req->email == Auth::user()->email){
+           return redirect()->back()->with(['flag'=>'info','message'=>'Thông tin không thay đổi!']);
+       }else{
+
+
+             User::where('id', Auth::user()->id)->update($data);
+             return redirect()->back()->with(['flag'=>'success','message'=>'Cật nhật thông tin thành công!']);
+
+       }
+}
+     //ko thay doi mk
+        return redirect()->back()->with(['flag'=>'danger','message'=>'Mật khẩu hiện tại không chính xác!']);
     }
 }

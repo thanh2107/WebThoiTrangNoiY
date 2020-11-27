@@ -2578,6 +2578,9 @@ span.style-checkbox{
     }
 
 /*custom*/
+ul.category-menu.account {
+    background: #F8F7F7;
+}
 #myBtn {
   display: none;
   position: fixed;

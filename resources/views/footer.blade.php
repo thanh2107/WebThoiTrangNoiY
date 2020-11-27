@@ -9,8 +9,10 @@ about-widget"> <h2>LORIEM</h2> <p>“Hãy diện đồ như thể bạn chuẩn 
 kẻ thù đáng ghét nhất của mình” – Kimora Lee </p> <img
 src="resources/img/cards.png" alt=""> </div> </div> <div class="col-lg-3
 col-sm-6"> <div class="footer-widget about-widget"> <h2>CSKH</h2> <ul> <li><a
-href="">Hệ Thống Cửa Hàng</a></li> <li><a href="">Tài Khoản</a></li> <li><a
-href="">Theo Dõi Đơn Hàng</a></li> <li><a href="">Hướng Dẫn Chọn Size</a></li>
+href="{{route('lien-he')}}">Hệ Thống Cửa Hàng</a></li>
+ <li><a href="{{route('my-account')}}">Tài Khoản</a></li> <li><a
+href="{{route('orders-tracking')}}">Theo Dõi Đơn Hàng</a></li>
+ <li><a href="">Hướng Dẫn Chọn Size</a></li>
 </ul>
 						
 					</div>
@@ -41,7 +43,7 @@ href="">Theo Dõi Đơn Hàng</a></li> <li><a href="">Hướng Dẫn Chọn Size
 						</div>
 						<div class="con-info">
 							<span>T.</span>
-							<p>+84 99999999</p>
+							<p>+84 988895726</p>
 						</div>
 						<div class="con-info">
 							<span>E.</span>
