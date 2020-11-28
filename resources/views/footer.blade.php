@@ -21,7 +21,7 @@ href="{{route('orders-tracking')}}">Theo Dõi Đơn Hàng</a></li>
 					<div class="footer-widget about-widget">
 						<h2>FAQ</h2>
 						<ul>
-							<li><a href="">Quy Định Đổi Hàng</a></li>
+							<li><a href="{{route('chinh-sach-doi-hang')}}">Quy Định Đổi Hàng</a></li>
 							<li><a href="">Điều Khoản & Điều Kiện</a></li>
 							<li><a href="">Chính Sách Vận Chuyển</a></li>
 							<li><a href="">Chính Sách Bảo Mật</a></li>
@@ -59,7 +59,7 @@ href="{{route('orders-tracking')}}">Theo Dõi Đơn Hàng</a></li>
 					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
 					<a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
 					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="https://www.facebook.com/dolotgiarenhat" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
 					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
 					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
 					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>

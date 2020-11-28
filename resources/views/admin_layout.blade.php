@@ -116,14 +116,7 @@ Summernote  --}}
                         <li><a href="{{route('all_detail_product')}}">Liệt kê chi tiết sản phẩm</a></li>
                     </ul>
                 </li>
-                <li class="sub-menu">
-                    <a href="{{route('all-slide')}}">
-                        <i class=" fa fa-bullhorn"></i>
-                        <span>Slide</span>
-                    </a>
-                    
-                </li>
-                <li class="sub-menu">
+                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>Đơn hàng</span>
@@ -133,19 +126,38 @@ Summernote  --}}
                         
                     </ul>
                 </li>
-                <li class="sub-menu">
-                    <a href="{{route('manage-users')}}">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span>Quản lý người dùng</span>
+                 <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span>Quản lý nội dung</span>
                     </a>
-                 
+                    <ul class="sub">
+                        <li><a href="{{route('return-policy')}}">Chính sách đổi trả</a></li>
+                        
+                    </ul>
                 </li>
-                    <li class="sub-menu">
+                <li class="sub-menu">
+                    <a href="{{route('all-slide')}}">
+                        <i class=" fa fa-bullhorn"></i>
+                        <span>Slide</span>
+                    </a>
+                    
+                </li>
+
+                
+                <li class="sub-menu">
                     <a href="{{route('all-news')}}">
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                         <span>Bài viết</span>
                     </a>
                     
+                </li>
+                <li class="sub-menu">
+                    <a href="{{route('manage-users')}}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>Quản lý người dùng</span>
+                    </a>
+
                 </li>
               
             </ul>            </div>
@@ -164,7 +176,7 @@ Summernote  --}}
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p style="text-align: center;">All rights reserved | Powered <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">Loriem</a></p>
+			  <p style="text-align: center;">All rights reserved | Powered <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">Đồ lót giá sỉ</a></p>
 			</div>
 		  </div>
   <!-- / footer -->

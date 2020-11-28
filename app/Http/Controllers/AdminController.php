@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ChiTietHD;
 use App\Models\HoaDon;
 use App\Models\User;
+use App\Models\ChinhSachDoiTra;
 use Hash;
 use Auth;
 use Session;
@@ -84,7 +85,6 @@ class AdminController extends Controller
          $this->AuthLogin();
         Auth::logout();
       return view('admin_login');
-    
         }
         public function manage_orders(){
          $this->AuthLogin();
@@ -114,5 +114,17 @@ class AdminController extends Controller
         return view('admin.manage_users',compact('all_users','all_order'));
     
         }
+        public function return_policy(){
+         $this->AuthLogin();
+        $role_return = ChinhSachDoiTra::where('id','1')->first();
+        return view('admin.return_policy',compact('role_return'));
+        }
+         public function save_return_policy(Request $req){
+
+        $data['noi_dung'] = $req->editordata;
+        ChinhSachDoiTra::where('id','1')->update($data);
+        Session::put('message', 'Chỉnh sửa thành công');
+        return redirect()->back();
+    }
 }
 

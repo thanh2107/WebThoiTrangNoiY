@@ -12,6 +12,7 @@ use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
 use App\Models\DongGia;
 use App\Models\NguoiDung;
+use App\Models\ChinhSachDoiTra;
 use App\Models\ResetPassword;
 use App\Models\User;
 use App\Models\TinTuc;
@@ -368,7 +369,7 @@ class HomeController extends Controller
              $data['name'] = $req->username;
         }
          if($req->phone != Auth::user()->phone){
-             $this->validate($require 'file';,
+             $this->validate($req,
 
             [   
  
@@ -418,4 +419,11 @@ if (Hash::check($req->password_current, Auth::user()->password)) {
      //ko thay doi mk
         return redirect()->back()->with(['flag'=>'danger','message'=>'Mật khẩu hiện tại không chính xác!']);
     }
+
+
+    public function chinh_sach_doi_hang(){
+         $role_return = ChinhSachDoiTra::where('id','1')->first();
+        return view('page.chinhsach_doihang',compact('role_return'));
+    }
+    
 }

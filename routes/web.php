@@ -165,7 +165,15 @@
 			'uses'=>'App\Http\Controllers\AdminController@manage_users',
 			'as'=>'manage-users'
 		]);
+		Route::get('return-policy',[
+			'uses'=>'App\Http\Controllers\AdminController@return_policy',
+			'as'=>'return-policy'
+		]);
+		Route::post('save-return-policy',[
 
+			'uses'=>'App\Http\Controllers\AdminController@save_return_policy',
+			'as'=>'save-return-policy'
+		]);
 		// ------------------------------------------------------------------------------------------------------
 		//news
 		Route::get('all-news',[
@@ -353,4 +361,9 @@
 
 			'uses'=>'App\Http\Controllers\HomeController@postSaveAccount',
 			'as'=>'save-account'
+		]);
+		Route::get('chinh-sach-doi-hang',[
+
+			'uses'=>'App\Http\Controllers\HomeController@chinh_sach_doi_hang',
+			'as'=>'chinh-sach-doi-hang'
 		]);
